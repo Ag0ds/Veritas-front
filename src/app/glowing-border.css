@@ -1,0 +1,73 @@
+@keyframes borderGlow {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.border-glow {
+  position: relative;
+  border: none !important; /* Remove a borda padrão */
+}
+
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  padding: 2px; /* Espessura da borda */
+  background: linear-gradient(45deg, transparent, transparent, #f1c40f, #f39c12, #f1c40f, transparent, transparent);
+  background-size: 300% 300%;
+  animation: borderGlow 4s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.border-glow-active::before {
+  background: linear-gradient(45deg, transparent, #f1c40f, #f39c12, #f1c40f, #f39c12, #f1c40f, transparent);
+  background-size: 200% 200%;
+  animation: borderGlow 3s linear infinite;
+}
+
+/* Variação para a seção enterprise */
+.border-glow-enterprise::before {
+  background: linear-gradient(45deg, transparent, transparent, #f1c40f, #f39c12, #f1c40f, transparent, transparent);
+}
+
+/* Variação para a seção pricing */
+.border-glow-pricing::before {
+  background: linear-gradient(45deg, transparent, transparent, #f1c40f, #f39c12, #f1c40f, transparent, transparent);
+}
+
+/* Variação para a seção customers */
+.border-glow-customers::before {
+  background: linear-gradient(45deg, transparent, transparent, #f1c40f, #f39c12, #f1c40f, transparent, transparent);
+}
+
+/* Estilo para a caixa de mensagem */
+.message-box {
+  position: relative;
+  border-radius: 0.75rem;
+}
+
+.message-box::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  transform: rotate(45deg);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
