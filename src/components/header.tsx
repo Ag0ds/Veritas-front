@@ -4,11 +4,12 @@ import Link from "next/link"
 import { ArrowUpRight, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState, useEffect } from "react"
+import Image from 'next/image'
 
 interface HeaderProps {
-  activeSection?: string
+  activeSection: string;
+  onNavigate: (id: string) => void; 
 }
-
 export default function Header({ activeSection = "home" }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -53,16 +54,20 @@ export default function Header({ activeSection = "home" }: HeaderProps) {
           <div className="flex-shrink-0">
             <Link href="/">
               <div className="w-12 h-12 md:flex items-center">
-                <img 
-                src="logo.png"
-                alt="Logo"
-                className="w-full h-full object-contain"
+                <Image 
+                  src="/logo.png"
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                  className="object-contain"
+                  priority  
                 />
                 <h1 
                 className={`font-[cambria]
                     text-lg
                     ${mobileMenuOpen ? "text-transparent" : "text-[#f1c40f]"}
-                    `}> 
+                    `}
+                    > 
                     Veritas 
                 </h1>
               </div>

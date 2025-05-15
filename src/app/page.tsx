@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react"
 import Header from "@/components/header"
 import { useInView } from "react-intersection-observer"
-import { motion, AnimatePresence, useAnimation, type PanInfo } from "framer-motion"
+import { motion, AnimatePresence, useAnimation } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import type { PanInfo } from "framer-motion"
 import { AnimatedBackground } from "@/components/animated-background"
 import ChatBox from "@/components/chat-box"
 import "./background-animation.css"
@@ -19,7 +20,6 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false)
   const carouselRef = useRef<HTMLDivElement>(null)
   const controls = useAnimation()
-  const [isScrolling, setIsScrolling] = useState(false)
   const [boxesGlowing, setBoxesGlowing] = useState({
     home: false,
     pricing: false,
@@ -70,8 +70,8 @@ export default function Home() {
   const [enterpriseRef, enterpriseInView] = useInView({ threshold: 0.5 })
   const [pricingRef, pricingInView] = useInView({ threshold: 0.5 })
   const [customersRef, customersInView] = useInView({ threshold: 0.5 })
-  const [aboutRef, aboutInView] = useInView({ threshold: 0.5 })
-  const [footerRef, footerInView] = useInView({ threshold: 0.2 })
+  const [, aboutInView] = useInView({ threshold: 0.5 })
+  const [footerRef] = useInView({ threshold: 0.2 })
 
   // Atualiza a seção ativa com base na visibilidade
   useEffect(() => {

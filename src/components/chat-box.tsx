@@ -110,10 +110,6 @@ export default function ChatBox({ className = "", glowing = false }: { className
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  // Função para rolar para a mensagem mais recente
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
-  }
 
   // Rola para o final quando novas mensagens são adicionadas
   useEffect(() => {
